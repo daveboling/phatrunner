@@ -27,13 +27,13 @@ h1.animated.fadeInDown Your Goals
             th Running
             th Cals Burned
               tbody
-                tr
-                  td Monday
-                  td 3000
-                  td 18000
-                  td 4 miles
-                  td 1 mile
-                  td 2450 cals
+                tr(ng-repeat='g in goals')
+                  td: a(href='' ng-click='editGoal(g._id)') {{g.date | date}}
+                  td {{g.goalCalories}}
+                  td {{g.foodIntake}}
+                  td {{g.walkMiles}}
+                  td {{g.runMiles}}
+                  td {{g.burnedCalories}}
 
 
 pre {{goals| json}}

@@ -11,8 +11,14 @@ exports.index = function(req, res){
 };
 
 exports.new = function(req, res){
-  console.log(req.body);
   Goal.create(req.body, req.user._id, function(err, goal){
+    res.send({goal: goal});
+  });
+};
+
+exports.edit = function(req, res){
+  console.log(req.params);
+  Goal.findById(req.params.id, function(err, goal){
     res.send({goal: goal});
   });
 };

@@ -29,6 +29,7 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.get('/goals/index', goals.index);
   app.post('/goals/create', goals.new);
+  app.get('/goal/:id/', goals.edit);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

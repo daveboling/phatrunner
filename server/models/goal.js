@@ -19,17 +19,29 @@ Object.defineProperty(Goal, 'collection', {
   get: function(){ return global.mongodb.collection('goals');}
 });
 
-Object.defineProperty(Goal.prototype, 'walking', {
+Object.defineProperty(Goal.prototype, 'hasWalked', {
   get: function(){
-    return this.walks.reduce(function(sum, walk){return walk.miles + sum;} , 0);
+    return this.walks.reduce(function(sum, walk){return walk + sum;} , 0);
   }
 });
 
-Object.defineProperty(Goal.prototype, 'running', {
+Object.defineProperty(Goal.prototype, 'hasRan', {
   get: function(){
-    return this.runs.reduce(function(sum, run){return run.miles + sum;} , 0);
+    return this.runs.reduce(function(sum, run){return run + sum;} , 0);
   }
 });
+
+Object.defineProperty(Goal.prototype, 'intake', {
+  get: function(){
+    return this.food.reduce(function(sum, food){return food.calories + sum;} , 0);
+  }
+});
+
+Goal.findById = function(goalId, cb){
+  var _id = Mongo.ObjectID(goalId);
+  console.log(_id);
+  Goal.collection.findOne({_id: _id}, cb);
+};
 
 Goal.create = function(o, userId, cb){
   var goal = new Goal(o, userId);
@@ -56,4 +68,3 @@ Goal.addWalk = function(goalId, walk, cb){
 
 
 module.exports = Goal;
-
