@@ -1,4 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative);
+@import url(http://fonts.googleapis.com/css?family=Courgette);
+
 // http://clrs.cc/
+
 
 @NAVY:    #001F3F;
 @BLUE:    #0074D9;
@@ -19,6 +23,7 @@
 
 body{
   background-color: @SILVER;
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 input.ng-invalid, select.ng-invalid{
@@ -27,4 +32,75 @@ input.ng-invalid, select.ng-invalid{
 
 h1 {
   text-align: center;
+  font-family: 'Courgette', cursive;
+}
+
+.panel {
+  margin: 15px;
+}
+
+th {
+  background-color: #58B1FC;
+}
+
+//Hover Effects//
+.outline-inward {
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.outline-inward:before {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  border: #58B1FC solid 2px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+.outline-inward:hover:before, .outline-inward:focus:before, .outline-inward:active:before {
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  opacity: 1;
+}
+
+//LogOff user.Email//
+.outline-inward-log {
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.outline-inward-log:before {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  border: #EA4545 solid 2px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+.outline-inward-log:hover:before, .outline-inward-log:focus:before, .outline-inward-log:active:before {
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  opacity: 1;
 }
