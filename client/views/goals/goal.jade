@@ -1,3 +1,15 @@
 h1 Your Goals
 
+.row
+  .col-xs-4
+  .col-xs-4
+    form(role='form', novalidate, name='userForm')
+      .form-group
+        label(for='calGoal') Calorie Goal
+        input.form-control#email(type='number', name='calGoal', ng-model='calGoal', autofocus, required)
+      .form-group
+      button.btn.btn-primary(ng-show='userForm.$valid', ng-click='create()') Create
+  .col-xs-4
 
+
+pre {{goals| json}}
