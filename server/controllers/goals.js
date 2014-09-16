@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Goal = require('../models/user');
+var Goal = require('../models/goal');
 
 
 exports.index = function(req, res){
@@ -10,10 +10,10 @@ exports.index = function(req, res){
   });
 };
 
-
 exports.new = function(req, res){
+  console.log(req.body);
   Goal.create(req.body, req.user._id, function(err, goal){
-    res.status(200).end();
+    res.send({goal: goal});
   });
 };
 

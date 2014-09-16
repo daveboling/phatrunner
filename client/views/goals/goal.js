@@ -4,19 +4,21 @@
   angular.module('mean-template')
   .controller('GoalCtrl', ['$scope', 'Goal', function($scope, Goal){
     $scope.goals = [];
-    $scope.calGoal = 0;
+    $scope.goal  = {};
+    $scope.user  = {};
 
     $scope.create = function(){
-      Goal.create($scope.calGoal).then(function(response){
+      Goal.create($scope.goal).then(function(response){
         $scope.goals.push(response.data.goal);
+        $scope.goal = {};
       });
     };
 
-    $scope.all = function(){
-      Goal.all().then(function(response){
-        $scope.goals = response.data.goals;
-      });
-    };
+    Goal.all().then(function(response){
+      $scope.user = response.data.user;
+      $scope.goals = response.data.goals;
+    });
+
   }]);
 })();
 

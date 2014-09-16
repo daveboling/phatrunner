@@ -5,8 +5,11 @@ h1 Your Goals
   .col-xs-4
     form(role='form', novalidate, name='userForm')
       .form-group
+        label(for='calGoal') Goal Name
+        input.form-control#goalName(type='text', name='name', ng-model='goal.name', autofocus, required)
+      .form-group
         label(for='calGoal') Calorie Goal
-        input.form-control#email(type='number', name='calGoal', ng-model='calGoal', autofocus, required)
+        input.form-control#calories(type='number', name='calories', ng-model='goal.goalCalories', required)
       .form-group
       button.btn.btn-primary(ng-show='userForm.$valid', ng-click='create()') Create
   .col-xs-4

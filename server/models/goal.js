@@ -4,9 +4,10 @@ var Mongo = require('mongodb');
 
 
 function Goal(o, userId){
-  this.name = o.name;
+  this.name = o.name || 'My Running Goal!';
   this.userId = Mongo.ObjectID(userId);
   this.goalCalories = o.goalCalories;
+  this.date = new Date();
 
   this.burned = 0;
   this.foods = [];
@@ -36,7 +37,7 @@ Goal.create = function(o, userId, cb){
 };
 
 Goal.all = function(userId, cb){
-  Goal.collection.find({_id: userId}).toArray(cb);
+  Goal.collection.find({userId: userId}).toArray(cb);
 };
 
 Goal.addRun = function(goalId, run, cb){

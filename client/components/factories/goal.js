@@ -5,11 +5,11 @@
   .factory('Goal', ['$http', function($http){
 
     function all(){
-      return $http.get('goal/index');
+      return $http.get('/goals/index');
     }
 
-    function create(goalCal){
-      return $http.post('goal/create', goalCal);
+    function create(goal){
+      return $http.post('/goals/create', goal);
     }
 
     return {create:create, all:all};
