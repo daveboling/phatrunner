@@ -1,15 +1,39 @@
-h1 Your Goals
+h1.animated.fadeInDown Your Goals
 
 .row
   .col-xs-4
   .col-xs-4
-    form(role='form', novalidate, name='userForm')
+    form.animated.fadeInUp(role='form', novalidate, name='userForm')
+      .form-group
+        label(for='calGoal') Goal Name
+        input.form-control#goalName(type='text', name='name', ng-model='goal.name', autofocus, required)
       .form-group
         label(for='calGoal') Calorie Goal
-        input.form-control#email(type='number', name='calGoal', ng-model='calGoal', autofocus, required)
+        input.form-control#calories(type='number', name='calories', ng-model='goal.goalCalories', required)
       .form-group
-      button.btn.btn-primary(ng-show='userForm.$valid', ng-click='create()') Create
+      button.btn.btn-primary.animated.flipInY(ng-show='userForm.$valid', ng-click='create()') Create
   .col-xs-4
+
+.row
+  .col-xs-12
+    .panel.panel-default(ng-hide='hidePanel')
+      .panel-body
+        table.table.table-bordered.table-hover
+          thead
+            th Date
+            th Goal
+            th Current Cal
+            th Walking
+            th Running
+            th Cals Burned
+              tbody
+                tr
+                  td Monday
+                  td 3000
+                  td 18000
+                  td 4 miles
+                  td 1 mile
+                  td 2450 cals
 
 
 pre {{goals| json}}
