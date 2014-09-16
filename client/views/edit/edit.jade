@@ -1,40 +1,38 @@
-h3 Edit
+h1.animated.fadeInDown Insert day here
 .row
-  .col-xs-3
-    form(role='form', novalidate, name='foodForm')
+  .col-xs-4
+  .col-xs-4
+    form.animated.fadeInUp(role='form', novalidate, name='foodForm')
       .form-group
-        label(for='name') Food
-        input.form-control#name(type='text', name='name', ng-model='food.name', autofocus, required)
+        label.form(for='name') What did you eat today?
+        input.form-control#food(type='text', name='name', ng-model='food.name', autofocus, required)
       .form-group
-        label(for='calories') Calories
-        input.form-control#calories(type='number', name='calories', ng-model='food.calories', required)
-      button.btn.btn-primary(ng-show='foodForm.$valid', ng-click='addFood()') Add Food
+        label.form(for='calories') How many calories did that have?
+        input.form-control#cal(type='number', name='calories', ng-model='food.calories', required)
+      button.btn.btn-primary.animated.flipInY.food(ng-show='foodForm.$valid', ng-click='addFood()') Add Food
 
-    table.table.table-bordered
-      thead
-        tr
-          th Food
-          th Calories
-      tbody
-        tr
-          td
-          td
-
-.row
-  .col-xs-3
-    form(role='form', novalidate, name='activityForm')
+    form.animated.fadeInUp(role='form', novalidate, name='activityForm')
       .form-group
-        label(for='miles') Miles
+        label.form(for='miles') Record your mileage here!
         input.form-control#miles(type='number', name='miles', ng-model='miles', required)
-      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
-      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
+      button.btn.btn-primary.animated.flipInY(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
+      button.btn.btn-primary.animated.flipInY(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
+  .col-xs-4
 
-    table.table.table-bordered
-      thead
-        tr
-          th Walk
-          th Run
-      tbody
-        tr
-          td
-          td
+  .col-xs-12
+    .panel.panel-default(ng-hide='hidePanel')
+      .panel-body
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th Food
+              th Calories
+              th Walk
+              th Run
+          tbody
+            tr
+              td Food
+              td Calories
+              td Miles
+              td Miles
+
