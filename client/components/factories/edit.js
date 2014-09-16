@@ -4,15 +4,19 @@
   angular.module('mean-template')
   .factory('Edit', ['$http', function($http){
 
-    function all(){
-      return $http.get('goal/index');
+    function addFood(food){
+      return $http.post('goal/addFood', food);
     }
 
-    function create(goalCal){
-      return $http.post('goal/create', goalCal);
+    function addWalk(miles){
+      return $http.post('goal/addWalk', {miles:miles});
     }
 
-    return {create:create, all:all};
+    function addRun(miles){
+      return $http.post('goal/addRun', {miles:miles});
+    }
+
+    return {addFood:addFood, addWalk:addWalk, addRun:addRun};
   }]);
 })();
 
