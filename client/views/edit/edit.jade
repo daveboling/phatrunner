@@ -1,0 +1,40 @@
+h3 Edit
+.row
+  .col-xs-3
+    form(role='form', novalidate, name='foodForm')
+      .form-group
+        label(for='name') Food
+        input.form-control#name(type='text', name='name', ng-model='food.name', autofocus, required)
+      .form-group
+        label(for='calories') Calories
+        input.form-control#calories(type='number', name='calories', ng-model='food.calories', required)
+      button.btn.btn-primary(ng-show='foodForm.$valid', ng-click='addFood()') Add Food
+
+    table.table.table-bordered
+      thead
+        tr
+          th Food
+          th Calories
+      tbody
+        tr
+          td
+          td
+
+.row
+  .col-xs-3
+    form(role='form', novalidate, name='activityForm')
+      .form-group
+        label(for='miles') Miles
+        input.form-control#miles(type='number', name='miles', ng-model='miles', required)
+      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
+      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
+
+    table.table.table-bordered
+      thead
+        tr
+          th Walk
+          th Run
+      tbody
+        tr
+          td
+          td
