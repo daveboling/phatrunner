@@ -1,9 +1,9 @@
 {
-  "name": "mean-template",
+  "name": "phatrunner",
   "version": "0.0.0",
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+  "homepage": "https://github.com/kadowki/phatrunner",
   "authors": [
-    "Chyld Medford <chyld.medford@gmail.com>"
+    "David D. Boling <kadowki@gmail.com>"
   ],
   "description": "The MEAN Template",
   "license": "MIT",

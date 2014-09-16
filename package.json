@@ -1,17 +1,22 @@
 {
-  "name": "mean-template",
+  "name": "phatrunner",
   "version": "0.0.0",
-  "description": "The MEAN Template",
+  "description": "A running app based on AngularJS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template"
+    "url": "https://github.com/kadowki/phatrunner"
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "David D. Boling <kadowki@gmail.com>",
+  "contributors": [
+    "Mike Barreiro <mikebbarreiro@gmail.com>",
+    "Dave Boling <kadowki@gmail.com>",
+    "Jessica Raines <jessicafraines@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template/issues"
+    "url": "https://github.com/kadowki/phatrunner/issues"
   },
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+  "homepage": "https://github.com/kadowki/phatrunner",
   "dependencies": {
     "async": "~0.9.0",
     "body-parser": "~1.8.2",
