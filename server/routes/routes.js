@@ -29,6 +29,10 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.get('/goals/index', goals.index);
   app.post('/goals/create', goals.new);
+  app.get('/goal/:id/', goals.edit);
+  app.post('/goal/:goalId/addfood', goals.addFood);
+  app.post('/goal/:goalId/addrun', goals.addRun);
+  app.post('/goal/:goalId/addwalk', goals.addWalk);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

@@ -2,7 +2,6 @@
 
 var Mongo = require('mongodb');
 
-
 function Goal(o, userId){
   this.name = o.name || 'My Running Goal!';
   this.userId = Mongo.ObjectID(userId);
@@ -19,17 +18,10 @@ Object.defineProperty(Goal, 'collection', {
   get: function(){ return global.mongodb.collection('goals');}
 });
 
-Object.defineProperty(Goal.prototype, 'walking', {
-  get: function(){
-    return this.walks.reduce(function(sum, walk){return walk.miles + sum;} , 0);
-  }
-});
-
-Object.defineProperty(Goal.prototype, 'running', {
-  get: function(){
-    return this.runs.reduce(function(sum, run){return run.miles + sum;} , 0);
-  }
-});
+Goal.findById = function(goalId, cb){
+  var _id = Mongo.ObjectID(goalId);
+  Goal.collection.findOne({_id: _id}, cb);
+};
 
 Goal.create = function(o, userId, cb){
   var goal = new Goal(o, userId);
@@ -38,6 +30,13 @@ Goal.create = function(o, userId, cb){
 
 Goal.all = function(userId, cb){
   Goal.collection.find({userId: userId}).toArray(cb);
+};
+
+Goal.addFood = function(goalId, food, cb){
+  Goal.collection.findOne({_id: Mongo.ObjectID(goalId)}, function(err, goal){
+    goal.foods.push(food);
+    Goal.collection.save(goal, cb);
+  });
 };
 
 Goal.addRun = function(goalId, run, cb){
@@ -56,4 +55,3 @@ Goal.addWalk = function(goalId, walk, cb){
 
 
 module.exports = Goal;
-

@@ -12,7 +12,11 @@
       return $http.post('/goals/create', goal);
     }
 
-    return {create:create, all:all};
+    function find(goalId){
+      return $http.get('/goal/' + goalId);
+    }
+
+    return {create:create, all:all, find: find};
   }]);
 })();
 

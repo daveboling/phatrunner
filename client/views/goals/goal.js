@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('mean-template')
-  .controller('GoalCtrl', ['$scope', 'Goal', function($scope, Goal){
+  .controller('GoalCtrl', ['$scope', '$rootScope', '$location', 'Goal', function($scope, $rootScope, $location, Goal){
     $scope.goals = [];
     $scope.goal  = {};
     $scope.user  = {};
@@ -15,9 +15,36 @@
     };
 
     Goal.all().then(function(response){
+      $rootScope.goalEdit = {};
       $scope.user = response.data.user;
       $scope.goals = response.data.goals;
     });
+
+    $scope.editGoal = function(goalId){
+      Goal.find(goalId).then(function(res){
+        $rootScope.goalEdit = res.data.goal;
+        $location.path('/edit');
+      });
+    };
+
+    $scope.walkMiles = function(walks){
+      return walks.reduce(function(sum, walk){ return walk.miles + sum;}, 0);
+    };
+
+    $scope.runMiles = function(runs){
+      return runs.reduce(function(sum, run){ return run.miles + sum;}, 0);
+    };
+
+    $scope.intake = function(foods){
+      return foods.reduce(function(sum, food){ return food.calories + sum;}, 0);
+    };
+
+    $scope.calsBurned = function(walkMiles, runMiles){
+      var totalRun = (($scope.user.weight * 1) * (0.63) * runMiles) || 0,
+         totalWalk = (($scope.user.weight * 1) * (0.53) * walkMiles) || 0;
+
+      return (totalRun + totalWalk) || 0;
+    };
 
   }]);
 })();
