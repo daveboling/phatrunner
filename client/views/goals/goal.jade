@@ -1,15 +1,12 @@
 h1.animated.fadeInDown Your Goals
 
-.row
+.ro
   .col-xs-4
   .col-xs-4
     form.animated.fadeInUp(role='form', novalidate, name='userForm')
       .form-group
-        label(for='calGoal') Goal Name
-        input.form-control#goalName(type='text', name='name', ng-model='goal.name', autofocus, required)
-      .form-group
         label(for='calGoal') Calorie Goal
-        input.form-control#calories(type='number', name='calories', ng-model='goal.goalCalories', required)
+        input.form-control#email(type='number', name='calGoal', ng-model='calGoal', autofocus, required)
       .form-group
       button.btn.btn-primary.animated.flipInY(ng-show='userForm.$valid', ng-click='create()') Create
   .col-xs-4
