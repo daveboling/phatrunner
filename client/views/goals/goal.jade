@@ -30,10 +30,10 @@ h1.animated.fadeInDown Your Goals
                 tr(ng-repeat='g in goals')
                   td: a(href='' ng-click='editGoal(g._id)') {{g.date | date}}
                   td {{g.goalCalories}}
-                  td {{g.foodIntake}}
-                  td {{g.walkMiles}}
-                  td {{g.runMiles}}
-                  td {{g.burnedCalories}}
+                  td {{intake(g.foods)}}
+                  td {{walkMiles(g.walks)}}
+                  td {{runMiles(g.runs)}}
+                  td {{calsBurned(walkMiles(g.walks), runMiles(g.runs))}}
 
 
 pre {{goals| json}}
