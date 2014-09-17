@@ -23,3 +23,20 @@ exports.edit = function(req, res){
   });
 };
 
+exports.addFood = function(req, res){
+  Goal.addFood(req.params.goalId, req.body, function(err, goal){
+    res.status(200).end();
+  });
+};
+
+exports.addRun = function(req, res){
+  Goal.addRun(req.params.goalId, req.body, function(err, goal){
+    res.status(200).end();
+  });
+};
+
+exports.addWalk = function(req, res){
+  Goal.addWalk(req.params.goalId, req.body, function(err, goal){
+    res.status(200).end();
+  });
+};

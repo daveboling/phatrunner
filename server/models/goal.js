@@ -32,6 +32,13 @@ Goal.all = function(userId, cb){
   Goal.collection.find({userId: userId}).toArray(cb);
 };
 
+Goal.addFood = function(goalId, food, cb){
+  Goal.collection.findOne({_id: Mongo.ObjectID(goalId)}, function(err, goal){
+    goal.foods.push(food);
+    Goal.collection.save(goal, cb);
+  });
+};
+
 Goal.addRun = function(goalId, run, cb){
   Goal.collection.findOne({_id: Mongo.ObjectID(goalId)}, function(err, goal){
     goal.runs.push(run);

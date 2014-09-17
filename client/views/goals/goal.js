@@ -40,8 +40,8 @@
     };
 
     $scope.calsBurned = function(walkMiles, runMiles){
-      var totalRun = ($scope.user.weight * 1) * (0.75) * runMiles,
-         totalWalk = ($scope.user.weight * 1) * (0.53) * runMiles;
+      var totalRun = (($scope.user.weight * 1) * (0.63) * runMiles) || 0,
+         totalWalk = (($scope.user.weight * 1) * (0.53) * walkMiles) || 0;
 
       return (totalRun + totalWalk) || 0;
     };

@@ -20,20 +20,19 @@ h1.animated.fadeInDown Your Goals
       .panel-body
         table.table.table-bordered.table-hover
           thead
+            th Motivate Me!
             th Date
-            th Goal
-            th Current Cal
-            th Walking
-            th Running
-            th Cals Burned
+            th Caloric Threshold
+            th Caloric Intake
+            th Walking Miles
+            th Running Miles
+            th Calories Burned
               tbody
                 tr(ng-repeat='g in goals')
-                  td: a(href='' ng-click='editGoal(g._id)') {{g.date | date}}
-                  td {{g.goalCalories}}
-                  td {{intake(g.foods)}}
+                  td: a(href='' ng-click='editGoal(g._id)')  {{g.name}}
+                  td {{g.date | date}}
+                  td {{g.goalCalories}} Calories
+                  td(ng-class='{red: g.goalCalories < intake(g.foods), green: g.goalCalories > intake(g.foods) }') {{intake(g.foods)}}
                   td {{walkMiles(g.walks)}}
                   td {{runMiles(g.runs)}}
-                  td {{calsBurned(walkMiles(g.walks), runMiles(g.runs))}}
-
-
-pre {{goals| json}}
+                  td.red(ng-class='{green: calsBurned(walkMiles(g.walks), runMiles(g.runs)) > g.goalCalories}') {{calsBurned(walkMiles(g.walks), runMiles(g.runs))}}

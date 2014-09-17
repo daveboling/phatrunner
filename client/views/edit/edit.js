@@ -18,31 +18,29 @@
     checkRoot();
 
 
-    $scope.foods = [];
+    $scope.foods = $rootScope.goalEdit.foods || [];
     $scope.food  = {};
-    $scope.runs  = [];
-    $scope.run   = {};
-    $scope.walks = [];
-    $scope.walk  = {};
+    $scope.runs  = $rootScope.goalEdit.runs || [];
+    $scope.walks = $rootScope.goalEdit.walks || [];
 
     $scope.addFood = function(){
       Edit.addFood($scope.food, $rootScope.goalEdit._id).then(function(response){
-        $scope.foods.push(response.data.food);
+        $scope.foods.push($scope.food);
         $scope.food = {};
       });
     };
 
     $scope.addRun = function(){
-      Edit.addRun($scope.run, $rootScope.goalEdit._id).then(function(response){
-        $scope.runs.push(response.data.run);
-        $scope.run = {};
+      Edit.addRun($scope.exercise, $rootScope.goalEdit._id).then(function(response){
+        $scope.runs.push($scope.exercise);
+        $scope.exercise = {};
       });
     };
 
     $scope.addWalk = function(){
-      Edit.addWalk($scope.walk, $rootScope.goalEdit._id).then(function(response){
-        $scope.walks.push(response.data.walk);
-        $scope.walk = {};
+      Edit.addWalk($scope.exercise, $rootScope.goalEdit._id).then(function(response){
+        $scope.walks.push($scope.exercise);
+        $scope.exercise = {};
       });
     };
 

@@ -1,4 +1,4 @@
-h3 Edit
+h3 {{goalEdit.name}}
 .row
   .col-xs-3
     form(role='form', novalidate, name='foodForm')
@@ -16,7 +16,7 @@ h3 Edit
           th Food
           th Calories
       tbody
-        tr(ng-repeat='food in goalEdit.foods')
+        tr(ng-repeat='food in foods')
           td {{food.name}}
           td {{food.calories}}
 
@@ -25,16 +25,31 @@ h3 Edit
     form(role='form', novalidate, name='activityForm')
       .form-group
         label(for='miles') Miles
-        input.form-control#miles(type='number', name='miles', ng-model='miles', required)
+        input.form-control#miles(type='number', name='exercise', ng-model='exercise.miles', required)
       button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
       button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
 
-    table.table.table-bordered
+.row
+  .col-xs-2
+  .col-xs-8
+    h3 Running
+    table.table.table-bordered(ng-show='runs')
       thead
         tr
-          th Walk
-          th Run
+          th Time (minutes)
+          th Miles Ran
       tbody
+        tr(ng-repeat='r in runs')
+          td {{(r.time || 0) + ' Minutes' || ''}}
+          td {{r.miles + ' Miles'}}
+    h3 Walking
+    table.table.table-bordered(ng-show='walks')
+      thead
         tr
-          td
-          td
+          th Time (minutes)
+          th Miles Walked
+      tbody
+        tr(ng-repeat='w in walks')
+          td {{(w.time || 0) + ' Minutes' || ''}}
+          td {{w.miles + ' Miles'}}
+  .col-xs-2
