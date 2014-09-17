@@ -1,14 +1,15 @@
-h3 {{goalEdit.name}}
+.row: h3.animated.fadeInDown {{goalEdit.name}}
 .row
-  .col-xs-3
-    form(role='form', novalidate, name='foodForm')
+  .col-xs-6.border.spread
+    h3 Today's Intake
+    form.animated.fadeInUp(role='form', novalidate, name='foodForm')
       .form-group
-        label(for='name') Food
-        input.form-control#name(type='text', name='name', ng-model='food.name', autofocus, required)
+        label(for='name') What did you eat today?
+        input.form-control#food(type='text', name='name', ng-model='food.name', autofocus, required)
       .form-group
-        label(for='calories') Calories
-        input.form-control#calories(type='number', name='calories', ng-model='food.calories', required)
-      button.btn.btn-primary(ng-show='foodForm.$valid', ng-click='addFood()') Add Food
+        label(for='calories') How many calories did that have?
+        input.form-control#cal(type='number', name='calories', ng-model='food.calories', required)
+      button.btn.btn-primary.animated.flipInY.full(ng-show='foodForm.$valid', ng-click='addFood()') Add Food
 
     table.table.table-bordered
       thead
@@ -20,18 +21,18 @@ h3 {{goalEdit.name}}
           td {{food.name}}
           td {{food.calories}}
 
-.row
-  .col-xs-3
-    form(role='form', novalidate, name='activityForm')
+  .col-xs-6.border
+    h3 Today's Runs/Walks
+    form.animated.fadeInUp(role='form', novalidate, name='activityForm')
       .form-group
-        label(for='miles') Miles
+        label(for='miles') Add Run/Walk
         input.form-control#miles(type='number', name='exercise', ng-model='exercise.miles', required)
-      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
-      button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
+        label(for='miles') Time
+        input.form-control#time(type='number', name='exercise', ng-model='exercise.time', required)
+      button.btn.btn-primary.animated.flipInY.full(ng-show='activityForm.$valid', ng-click='addRun()') Add Run
+      button.btn.btn-primary.animated.flipInY.full(ng-show='activityForm.$valid', ng-click='addWalk()') Add Walk
 
-.row
-  .col-xs-2
-  .col-xs-8
+
     h3 Running
     table.table.table-bordered(ng-show='runs')
       thead
@@ -52,4 +53,4 @@ h3 {{goalEdit.name}}
         tr(ng-repeat='w in walks')
           td {{(w.time || 0) + ' Minutes' || ''}}
           td {{w.miles + ' Miles'}}
-  .col-xs-2
+
